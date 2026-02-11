@@ -128,7 +128,13 @@ const Sidebar = ({ onLoginClick }) => {
         </div>
 
         <div className="sidebar-actions">
-          <button className="sidebar-login-btn" onClick={onLoginClick}>
+          <button
+            className="sidebar-login-btn"
+            onClick={(e) => {
+              e.preventDefault();
+              navigate("/");
+            }}
+          >
             <FaSignInAlt className="btn-icon" />
             Sign Out
           </button>
