@@ -26,10 +26,26 @@ const Navbar = ({ onLoginClick }) => {
       </div>
 
       <ul className="navbar-links">
-        <li><a href="/features" onClick={(e) => {
-            e.preventDefault();
-            navigate("/features");
-          }}>Features</a></li>
+        <li>
+          <a
+            href="#features"
+            onClick={(e) => {
+              e.preventDefault();
+              const featuresElement = document.getElementById("features");
+              if (featuresElement) {
+                featuresElement.scrollIntoView({ behavior: "smooth" });
+              } else if (window.location.pathname !== "/") {
+                navigate("/");
+                setTimeout(() => {
+                  const el = document.getElementById("features");
+                  if (el) el.scrollIntoView({ behavior: "smooth" });
+                }, 100);
+              }
+            }}
+          >
+            Features
+          </a>
+        </li>
         <li><a href="#about">About</a></li>
         <li><a href="#docs">Docs</a></li>
         <li><a href="#pricing">Pricing</a></li>

@@ -1,7 +1,9 @@
 import "./home.css";
 import homeImage from "../../assets/home.jpeg";
+import { useNavigate } from "react-router-dom";
 
 const Home = () => {
+  const navigate = useNavigate();
   return (
     <section className="home">
       {/* SPLINE RELATIVE */}
@@ -29,7 +31,7 @@ const Home = () => {
         </p>
 
         <div className="home-buttons">
-          <button className="primary-btn">Start Free</button>
+          <button className="primary-btn" onClick={() => navigate("/register")}>Start Free</button>
           <button className="secondary-btn">How it Works →</button>
         </div>
       </div>

@@ -2,7 +2,7 @@ import "./features.css";
 
 const Features = () => {
   return (
-    <section className="features-section">
+    <section id="features" className="features-section">
       {/* LEFT HEADER */}
       <div className="features-header">
         <span className="features-tag">

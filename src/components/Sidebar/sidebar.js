@@ -17,6 +17,8 @@ const Sidebar = ({ onLoginClick }) => {
   const location = useLocation();
   const [scrolled, setScrolled] = useState(false);
   const [activeLink, setActiveLink] = useState("dashboard");
+  const [user, setUser] = useState(null);
+
 
   useEffect(() => {
     const handleScroll = () => {
@@ -35,6 +37,14 @@ const Sidebar = ({ onLoginClick }) => {
       setActiveLink("dashboard");
     }
   }, [location.pathname]);
+
+  useEffect(() => {
+    const storedUser = localStorage.getItem("user");
+    if (storedUser) {
+      setUser(JSON.parse(storedUser));
+    }
+  }, []);
+  
 
   return (
     <nav className={`sidebar-nav ${scrolled ? "scrolled" : ""}`}>
@@ -116,10 +126,21 @@ const Sidebar = ({ onLoginClick }) => {
       <div className="sidebar-footer">
         <div className="user-profile-mini">
           <div className="user-avatar">
-            <span>AM</span>
+          <span>
+            {user?.fullName
+              ? user.fullName
+                  .trim()
+                  .split(" ")
+                  .filter(Boolean)
+                  .slice(0, 2)
+                  .map(name => name[0].toUpperCase())
+                  .join("")
+              : "U"}
+          </span>
+
           </div>
           <div className="user-info">
-            <div className="user-name">Alex Morgan</div>
+            <div className="user-name">{user?.fullName}</div>
             <div className="user-status">
               <span className="status-dot"></span>
               Premium Member
