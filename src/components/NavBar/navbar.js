@@ -26,7 +26,10 @@ const Navbar = ({ onLoginClick }) => {
       </div>
 
       <ul className="navbar-links">
-        <li><a href="#features">Features</a></li>
+        <li><a href="/features" onClick={(e) => {
+            e.preventDefault();
+            navigate("/features");
+          }}>Features</a></li>
         <li><a href="#about">About</a></li>
         <li><a href="#docs">Docs</a></li>
         <li><a href="#pricing">Pricing</a></li>
