@@ -1,0 +1,152 @@
+/* ===============================
+   NAVBAR BASE
+================================ */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  height: 80px;
+  padding: 0 8%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: all 0.3s ease;
+  background: transparent;
+}
+
+/* On scroll */
+.navbar.scrolled {
+  backdrop-filter: blur(12px);
+  background: rgba(237, 244, 243, 0.85);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
+}
+
+/* ===============================
+   LOGO
+================================ */
+.navbar-logo {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+}
+
+.navbar-logo img {
+  height: 36px;
+}
+
+.calm {
+  font-weight: 700;
+  color: #111;
+}
+
+.mind {
+  font-weight: 700;
+  color: #4caf50;
+}
+
+/* ===============================
+   LINKS
+================================ */
+.navbar-links {
+  list-style: none;
+  display: flex;
+  gap: 44px;
+}
+
+.navbar-links a {
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: rgba(24, 24, 24, 0.65);
+  transition: color 0.25s ease;
+}
+
+.navbar-links a:hover {
+  color: rgba(0, 0, 0, 0.85);
+}
+
+/* ===============================
+   RIGHT ACTIONS
+================================ */
+.navbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 34px;
+}
+
+.account {
+  font-size: 14px;
+  font-weight: 600;
+  color: rgba(0, 0, 0, 0.45);
+  text-decoration: none;
+  letter-spacing: 1px;
+  transition: color 0.25s ease;
+}
+
+.account:hover {
+  color: rgba(0, 0, 0, 0.85);
+}
+
+/* ===============================
+   LOGIN BUTTON (UPDATED)
+================================ */
+.login-btn {
+  position: relative;
+  padding: 12px 30px;
+  border-radius: 999px;
+  border: 1px solid rgba(207, 205, 205, 0.18);
+
+  background: rgba(255, 255, 255, 0.45);
+  backdrop-filter: blur(10px);
+
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+
+  color: rgba(165, 163, 163, 0.75);
+  cursor: pointer;
+
+  transition:
+    background 0.3s ease,
+    box-shadow 0.3s ease,
+    transform 0.2s ease;
+}
+
+/* Hover */
+.login-btn:hover {
+  background: rgba(255, 255, 255, 0.75);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+  transform: translateY(-2px);
+}
+
+/* Click */
+.login-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 6px 16px rgba(182, 169, 169, 0.12);
+}
+
+/* Focus */
+.login-btn:focus {
+  outline: none;
+  box-shadow:
+    0 0 0 2px rgba(0, 0, 0, 0.15),
+    0 10px 30px rgba(0, 0, 0, 0.12);
+}
+
+/* ===============================
+   RESPONSIVE
+================================ */
+@media (max-width: 900px) {
+  .navbar {
+    padding: 0 24px;
+  }
+
+  .navbar-links,
+  .account {
+    display: none;
+  }
+}

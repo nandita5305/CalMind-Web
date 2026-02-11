@@ -1,0 +1,234 @@
+/* ================= IMPROVED LOGIN UI ================= */
+/* Friendly Illustration Theme */
+
+.login-wrapper {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f0fdf4, #fefce8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  font-family: "Inter", sans-serif;
+}
+
+/* MAIN CONTAINER */
+.login-container {
+  width: 100%;
+  max-width: 1150px;
+  background: #ffffffcc;
+  backdrop-filter: blur(14px);
+  border-radius: 28px;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.08);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  overflow: hidden;
+  border: 1px solid #ecfdf5;
+}
+
+/* ================= LEFT ================= */
+.login-left {
+  padding: 70px 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.login-left h1 {
+  font-size: 40px;
+  margin-bottom: 12px;
+  color: #064e3b;
+  font-weight: 700;
+}
+
+.subtitle {
+  color: #6b7280;
+  margin-bottom: 32px;
+  line-height: 1.6;
+  font-size: 15px;
+}
+
+/* INPUTS */
+.login-left input {
+  padding: 15px 20px;
+  margin-bottom: 16px;
+  border-radius: 999px;
+  border: 1px solid #d1fae5;
+  outline: none;
+  font-size: 14px;
+  background: #f9fafb;
+  transition: 0.25s;
+}
+
+.login-left input:focus {
+  border-color: #34d399;
+  background: white;
+  box-shadow: 0 0 0 4px #d1fae5;
+}
+
+/* FORGOT */
+.forgot {
+  text-align: right;
+  font-size: 13px;
+  color: #10b981;
+  margin-bottom: 22px;
+  cursor: pointer;
+}
+
+/* BUTTON */
+.login-btn {
+  background: linear-gradient(135deg, #10b981, #34d399);
+  color: white;
+  padding: 15px;
+  border: none;
+  border-radius: 999px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-bottom: 26px;
+  transition: 0.25s;
+  box-shadow: 0 8px 18px rgba(16,185,129,0.25);
+}
+
+.login-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 24px rgba(16,185,129,0.35);
+}
+
+/* DIVIDER */
+.divider {
+  display: flex;
+  align-items: center;
+  margin-bottom: 22px;
+}
+
+.divider span {
+  flex: 1;
+  height: 1px;
+  background: #e5e7eb;
+}
+
+.divider p {
+  margin: 0 12px;
+  font-size: 13px;
+  color: #9ca3af;
+}
+
+/* SOCIALS */
+.socials {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  margin-bottom: 22px;
+}
+
+.icon {
+  width: 46px;
+  height: 46px;
+  background: #ecfdf5;
+  color: #065f46;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: 0.25s;
+  box-shadow: 0 6px 14px rgba(0,0,0,0.06);
+}
+
+.icon:hover {
+  background: #10b981;
+  color: white;
+  transform: translateY(-3px);
+}
+
+/* REGISTER */
+.register {
+  text-align: center;
+  color: #6b7280;
+  font-size: 14px;
+}
+
+.register-link {
+  color: #10b981;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+/* ================= RIGHT ================= */
+.login-right {
+  background: linear-gradient(180deg, #fef9c3, #ecfdf5);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 50px;
+}
+
+/* Illustration */
+.illustration {
+  width: 340px;
+  margin-bottom: 24px;
+  filter: drop-shadow(0 20px 30px rgba(0,0,0,0.15));
+}
+
+/* Floating Card */
+.floating-card {
+  position: absolute;
+  left: 50px;
+  bottom: 110px;
+  background: white;
+  padding: 18px;
+  border-radius: 18px;
+  width: 200px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+  border: 1px solid #ecfdf5;
+}
+
+.floating-card h3 {
+  font-size: 14px;
+  color: #065f46;
+}
+
+.floating-card p {
+  font-size: 12px;
+  color: gray;
+  margin-bottom: 10px;
+}
+
+.card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card-footer span {
+  background: #f0fdf4;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 11px;
+}
+
+.card-footer b {
+  color: #10b981;
+  font-size: 12px;
+}
+
+/* Right Text */
+.right-text {
+  text-align: center;
+  color: #065f46;
+  font-weight: 500;
+  max-width: 260px;
+  line-height: 1.6;
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 900px) {
+  .login-container {
+    grid-template-columns: 1fr;
+  }
+
+  .login-right {
+    display: none;
+  }
+}

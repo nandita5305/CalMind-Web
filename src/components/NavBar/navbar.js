@@ -1,0 +1,42 @@
+import React, { useEffect, useState } from "react";
+import "./navbar.css";
+import logo from "../../assets/logo.png";
+
+const Navbar = ({ onLoginClick }) => {
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 10);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  return (
+    <nav className={`navbar ${scrolled ? "scrolled" : ""}`}>
+
+      <div className="navbar-logo">
+        <img src={logo} alt="CalMind Logo" />
+        <span className="calm">Cal</span>
+        <span className="mind">Mind</span>
+      </div>
+
+      <ul className="navbar-links">
+        <li><a href="#features">Features</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#docs">Docs</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+      </ul>
+
+      <div className="navbar-actions">
+        <button className="login-btn" onClick={onLoginClick}>
+          Login
+        </button>
+      </div>
+    </nav>
+  );
+};
+
+export default Navbar;

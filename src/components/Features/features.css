@@ -1,0 +1,113 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap");
+
+:root {
+  --bg-dark: #060611;
+  --card-bg: rgba(15, 18, 30, 0.55);
+  --grid: rgba(255, 255, 255, 0.05);
+  --accent: #2fc3e4;
+  --text-muted: #8fb5a5;
+}
+
+.features-section {
+  font-family: "Inter", sans-serif;
+  padding: 100px 80px;
+  background-color: var(--bg-dark);
+  background-image:
+    linear-gradient(var(--grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: 120px 120px;
+  color: white;
+  position: relative;
+}
+
+/* HEADER */
+.features-header {
+  max-width: 600px;
+}
+
+.features-tag {
+  color: var(--accent);
+  font-size: 14px;
+  letter-spacing: 2px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.tag-number {
+  background: rgba(47, 228, 167, 0.15);
+  padding: 4px 10px;
+  border-radius: 6px;
+}
+
+.features-title {
+  font-size: 64px;
+  font-weight: 400;
+  margin-top: 20px;
+}
+
+.features-title span {
+  color: var(--accent);
+}
+
+/* RIGHT TEXT */
+.features-description {
+  position: absolute;
+  top: 130px;
+  right: 80px;
+  max-width: 420px;
+  color: var(--text-muted);
+  font-size: 15px;
+  line-height: 1.8;
+}
+
+/* CARDS */
+.features-cards {
+  margin-top: 120px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+}
+
+.feature-card {
+  background: var(--card-bg);
+  border-radius: 22px;
+  padding: 40px;
+  min-height: 320px;
+  position: relative;
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.icon {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: rgba(47, 228, 167, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent);
+  font-size: 18px;
+  margin-bottom: 30px;
+}
+
+.feature-card h3 {
+  font-size: 22px;
+  font-weight: 500;
+  margin-bottom: 14px;
+}
+
+.feature-card p {
+  color: var(--text-muted);
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.phase {
+  position: absolute;
+  bottom: 30px;
+  color: var(--accent);
+  font-size: 13px;
+  letter-spacing: 1.5px;
+}

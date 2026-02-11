@@ -1,0 +1,77 @@
+/* ===============================
+   RESET
+================================ */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ===============================
+   BODY BACKGROUND
+================================ */
+body {
+  font-family: "Inter", system-ui, sans-serif;
+  background: linear-gradient(
+    120deg,
+    #eaf6f9,
+    #d6edf3,
+    #bfe3ec
+  );
+  color: #0f2f3a;
+  overflow-x: hidden;
+}
+
+/* ===============================
+   SPLINE — only in Home
+================================ */
+.spline-bg {
+  position: absolute; /* was fixed, now absolute */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0; /* behind content */
+  pointer-events: none;
+}
+
+.spline-bg iframe {
+  width: 100%;
+  height: 100%;
+  opacity: 0.65;
+}
+
+/* ===============================
+   HORIZONTAL LINES — only over Home
+================================ */
+.horizontal-lines {
+  position: absolute; /* was fixed, now absolute */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%; /* covers Home height */
+  pointer-events: none;
+  z-index: 1;
+
+  background-image: linear-gradient(
+    to right,
+    rgba(0, 90, 130, 0.07) 1px,
+    transparent 2px
+  );
+  background-size: 250px 100%;
+}
+
+/* ===============================
+   HOME SECTION
+================================ */
+.home {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: 0 8%;
+  gap: 4rem;
+  overflow: hidden;
+  z-index: 2; /* content above spline and lines */
+  background-color: #eaf6f9;
+}
