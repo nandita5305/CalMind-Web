@@ -1,10 +1,52 @@
 // LoginPage.jsx
-import React from "react";
+import React, { useState } from "react";
 import "./login.css";
 import { FaGoogle, FaApple, FaFacebookF } from "react-icons/fa";
-import photo from "../../assets/feature3.png"
+import photo from "../../assets/feature3.png";
 
 export default function LoginPage() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  
+
+  const handleLogin = async () => {
+    if (!email || !password) {
+      alert("Please fill all fields");
+      return;
+    }
+
+    try {
+      const response = await fetch("http://localhost:5000/api/auth/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ email, password })
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        alert(data.message);
+        return;
+      }
+
+      // Save token
+      localStorage.setItem("token", data.token);
+      localStorage.setItem("user", JSON.stringify(data.user));
+
+
+      alert("Login successful 🎉");
+
+      // redirect
+      window.location.href = "/profile";
+
+    } catch (error) {
+      console.error(error);
+      alert("Server error");
+    }
+  };
+
   return (
     <div className="login-wrapper">
       <div className="login-container">
@@ -18,13 +60,26 @@ export default function LoginPage() {
             with CalMind<br/> Get started for free.
           </p>
 
-          <input type="text" placeholder="Username" />
+          <input
+  type="email"
+  placeholder="Email"
+  value={email}
+  onChange={(e) => setEmail(e.target.value)}
+/>
 
-          <input type="password" placeholder="Password" />
+<input
+  type="password"
+  placeholder="Password"
+  value={password}
+  onChange={(e) => setPassword(e.target.value)}
+/>
+
 
           <div className="forgot">Forgot Password?</div>
 
-          <button className="login-btn">Login</button>
+          <button className="login-btn" onClick={handleLogin}>
+            Login 
+          </button>
 
           <div className="divider">
             <span></span>
@@ -39,7 +94,13 @@ export default function LoginPage() {
           </div>
 
           <p className="register">
-            Not a member? <b className="register-link" onClick={() => window.location.href='/register'}>Register now</b>
+            Not a member?{" "}
+            <b
+              className="register-link"
+              onClick={() => window.location.href='/register'}
+            >
+              Register now
+            </b>
           </p>
         </div>
 
@@ -61,4 +122,3 @@ export default function LoginPage() {
     </div>
   );
 }
-

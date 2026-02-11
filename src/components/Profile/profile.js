@@ -13,6 +13,8 @@ import {
 } from "react-icons/fa";
 
 const Profile = () => {
+  const [user, setUser] = useState(null);
+
   const [activeTab, setActiveTab] = useState("overview");
   const [selectedDate, setSelectedDate] = useState(new Date());
 
@@ -33,6 +35,15 @@ const Profile = () => {
   const currentMonth = currentDate.toLocaleString('default', { month: 'long' });
   const currentYear = currentDate.getFullYear();
 
+  useEffect(() => {
+    const storedUser = localStorage.getItem("user");
+  
+    if (storedUser) {
+      setUser(JSON.parse(storedUser));
+    }
+  }, []);
+  
+
   return (
     <div className="profile-container">
       <Sidebar />
@@ -42,7 +53,7 @@ const Profile = () => {
         <div className="profile-header">
           <div className="header-left">
             <h1 className="greeting">
-              Welcome back, <span className="highlight">Alex</span>
+              Welcome back, <span className="highlight">{user?.fullName}</span>
             </h1>
             <p className="subtitle">
               Your journey to calmness continues. Here's your progress overview.

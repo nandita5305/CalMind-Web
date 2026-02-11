@@ -124,14 +124,34 @@ export default function Register() {
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+  
     if (validateStep()) {
-      console.log("Form submitted:", formData);
-      alert("🎉 Welcome to Calmind! Your account has been created successfully.");
-      // Here you would typically send data to your backend
+      try {
+        const res = await fetch("http://localhost:5000/api/auth/register", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(formData)
+        });
+  
+        const data = await res.json();
+  
+        if (res.ok) {
+          alert("Account created 🎉");
+          navigate("/profile");
+        } else {
+          alert(data.message);
+        }
+      } catch (err) {
+        console.error(err);
+        alert("Server error");
+      }
     }
   };
+  
 
   const handleStepClick = (stepNumber) => {
     if (stepNumber <= step) {
@@ -432,16 +452,12 @@ export default function Register() {
                 </button>
               ) : (
                 <button 
-                  type="submit"
-                  className="nav-button submit-button"
-                  href="/profile"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    navigate("/profile");
-                  }}
-                >
-                  Get Started ✓
-                </button>
+                    type="submit"
+                    className="nav-button submit-button"
+                  >
+                    Get Started ✓
+                  </button>
+
               )}
             </div>
           </div>
