@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./session.css";
-import Navbar from "../NavBar/navbar";
+import Sidebar from "../Sidebar/sidebar";
 import { 
   FaBrain, 
   FaCalendarAlt, 
@@ -106,7 +106,7 @@ const SessionsPage = () => {
 
   return (
     <div className="sessions-container">
-      <Navbar />
+      <Sidebar />
       
       <main className="sessions-content">
         {/* Header Section */}

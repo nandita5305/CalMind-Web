@@ -1,7 +1,7 @@
 /* ===============================
-   NAVBAR LEFT SIDE - ENHANCED
+   SIDEBAR LEFT SIDE - ENHANCED
 ================================ */
-.navbar {
+.sidebar-nav {
   position: fixed;
   left: 0;
   top: 0;
@@ -18,7 +18,7 @@
 }
 
 /* Logo Section */
-.navbar-logo {
+.sidebar-logo {
   display: flex;
   align-items: center;
   gap: 8px;
@@ -28,7 +28,7 @@
   padding-bottom: 24px;
 }
 
-.navbar-logo img {
+.sidebar-logo img {
   height: 44px;
   width: auto;
   filter: drop-shadow(0 4px 8px rgba(46, 125, 50, 0.12));
@@ -49,7 +49,7 @@
 }
 
 /* Navigation Links with Icons */
-.navbar-links {
+.sidebar-links {
   list-style: none;
   display: flex;
   flex-direction: column;
@@ -60,11 +60,11 @@
   flex: 1;
 }
 
-.navbar-links li {
+.sidebar-links li {
   width: 100%;
 }
 
-.navbar-links a {
+.sidebar-links a {
   display: flex;
   align-items: center;
   gap: 14px;
@@ -86,30 +86,30 @@
 }
 
 /* Active and Hover States */
-.navbar-links a:hover {
+.sidebar-links a:hover {
   background: linear-gradient(95deg, rgba(76, 175, 80, 0.08) 0%, rgba(76, 175, 80, 0.04) 100%);
   color: #1e3a2a;
   padding-left: 28px;
 }
 
-.navbar-links a:hover .nav-icon {
+.sidebar-links a:hover .nav-icon {
   color: #2e7d32;
   transform: scale(1.1);
 }
 
-.navbar-links a.active {
+.sidebar-links a.active {
   background: linear-gradient(95deg, rgba(76, 175, 80, 0.12) 0%, rgba(76, 175, 80, 0.06) 100%);
   color: #1e5e3a;
   font-weight: 600;
   border-left: 4px solid #2e7d32;
 }
 
-.navbar-links a.active .nav-icon {
+.sidebar-links a.active .nav-icon {
   color: #2e7d32;
 }
 
 /* Active indicator */
-.navbar-links a.active::before {
+.sidebar-links a.active::before {
   content: '';
   position: absolute;
   left: 0;
@@ -122,8 +122,8 @@
   box-shadow: 0 4px 12px rgba(46, 125, 50, 0.3);
 }
 
-/* Navbar Footer */
-.navbar-footer {
+/* Sidebar Footer */
+.sidebar-footer {
   margin-top: auto;
   width: 100%;
 }
@@ -186,12 +186,12 @@
 }
 
 /* Login/Sign Out Button */
-.navbar-actions {
+.sidebar-actions {
   width: 100%;
   margin-bottom: 24px;
 }
 
-.login-btn {
+.sidebar-login-btn {
   width: 100%;
   padding: 16px 24px;
   border-radius: 20px;
@@ -214,15 +214,15 @@
   font-size: 18px;
 }
 
-.login-btn:hover {
+.sidebar-login-btn:hover {
   background: linear-gradient(145deg, #4caf50, #3d9c41);
-  color: white;
+  color: rgb(255, 255, 255);
   transform: translateY(-2px);
   box-shadow: 0 12px 28px rgba(76, 175, 80, 0.35);
   border-color: transparent;
 }
 
-.login-btn:hover .btn-icon {
+.sidebar-login-btn:hover .btn-icon {
   color: white;
 }
 
@@ -264,18 +264,18 @@
 
 /* Responsive */
 @media (max-width: 1200px) {
-  .navbar {
+  .sidebar-nav {
     width: 280px;
     padding: 28px 20px;
   }
 }
 
 @media (max-width: 768px) {
-  .navbar {
+  .sidebar-nav {
     transform: translateX(-100%);
   }
   
-  .navbar.open {
+  .sidebar-nav.open {
     transform: translateX(0);
   }
 }

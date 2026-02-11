@@ -10,10 +10,13 @@ import {
   FaChartLine,
   FaHeart
 } from "react-icons/fa";
+import { useNavigate, useLocation } from "react-router-dom";
 
 const Sidebar = ({ onLoginClick }) => {
+  const navigate = useNavigate();
+  const location = useLocation();
   const [scrolled, setScrolled] = useState(false);
-  const [activeLink, setActiveLink] = useState("#dashboard");
+  const [activeLink, setActiveLink] = useState("dashboard");
 
   useEffect(() => {
     const handleScroll = () => {
@@ -24,23 +27,36 @@ const Sidebar = ({ onLoginClick }) => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Sync active link with current route path
+  useEffect(() => {
+    if (location.pathname.startsWith("/sessions")) {
+      setActiveLink("sessions");
+    } else if (location.pathname.startsWith("/profile")) {
+      setActiveLink("dashboard");
+    }
+  }, [location.pathname]);
+
   return (
-    <nav className={`navbar ${scrolled ? "scrolled" : ""}`}>
+    <nav className={`sidebar-nav ${scrolled ? "scrolled" : ""}`}>
       
       {/* LOGO */}
-      <div className="navbar-logo">
+      <div className="sidebar-logo">
         <img src={logo} alt="CalMind Logo" />
         <span className="calm">Cal</span>
         <span className="mind">Mind</span>
       </div>
 
       {/* LINKS */}
-      <ul className="navbar-links">
+      <ul className="sidebar-links">
         <li>
           <a
-            href="#dashboard"
-            className={activeLink === "#dashboard" ? "active" : ""}
-            onClick={() => setActiveLink("#dashboard")}
+            href="/profile"
+            className={activeLink === "dashboard" ? "active" : ""}
+            onClick={(e) => {
+              e.preventDefault();
+              setActiveLink("dashboard");
+              navigate("/profile");
+            }}
           >
             <FaHome className="nav-icon" />
             Dashboard
@@ -49,9 +65,13 @@ const Sidebar = ({ onLoginClick }) => {
 
         <li>
           <a
-            href="#sessions"
-            className={activeLink === "#sessions" ? "active" : ""}
-            onClick={() => setActiveLink("#sessions")}
+            href="/sessions"
+            className={activeLink === "sessions" ? "active" : ""}
+            onClick={(e) => {
+              e.preventDefault();
+              setActiveLink("sessions");
+              navigate("/sessions");
+            }}
           >
             <FaBrain className="nav-icon" />
             Sessions
@@ -61,8 +81,8 @@ const Sidebar = ({ onLoginClick }) => {
         <li>
           <a
             href="#calendar"
-            className={activeLink === "#calendar" ? "active" : ""}
-            onClick={() => setActiveLink("#calendar")}
+            className={activeLink === "calendar" ? "active" : ""}
+            onClick={() => setActiveLink("calendar")}
           >
             <FaCalendarCheck className="nav-icon" />
             Calendar
@@ -72,8 +92,8 @@ const Sidebar = ({ onLoginClick }) => {
         <li>
           <a
             href="#progress"
-            className={activeLink === "#progress" ? "active" : ""}
-            onClick={() => setActiveLink("#progress")}
+            className={activeLink === "progress" ? "active" : ""}
+            onClick={() => setActiveLink("progress")}
           >
             <FaChartLine className="nav-icon" />
             Progress
@@ -83,8 +103,8 @@ const Sidebar = ({ onLoginClick }) => {
         <li>
           <a
             href="#mindfulness"
-            className={activeLink === "#mindfulness" ? "active" : ""}
-            onClick={() => setActiveLink("#mindfulness")}
+            className={activeLink === "mindfulness" ? "active" : ""}
+            onClick={() => setActiveLink("mindfulness")}
           >
             <FaHeart className="nav-icon" />
             Mindfulness
@@ -93,7 +113,7 @@ const Sidebar = ({ onLoginClick }) => {
       </ul>
 
       {/* FOOTER */}
-      <div className="navbar-footer">
+      <div className="sidebar-footer">
         <div className="user-profile-mini">
           <div className="user-avatar">
             <span>AM</span>
@@ -107,8 +127,8 @@ const Sidebar = ({ onLoginClick }) => {
           </div>
         </div>
 
-        <div className="navbar-actions">
-          <button className="login-btn" onClick={onLoginClick}>
+        <div className="sidebar-actions">
+          <button className="sidebar-login-btn" onClick={onLoginClick}>
             <FaSignInAlt className="btn-icon" />
             Sign Out
           </button>

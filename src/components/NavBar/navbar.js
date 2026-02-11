@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./navbar.css";
 import logo from "../../assets/logo.png";
 
 const Navbar = ({ onLoginClick }) => {
+  const navigate = useNavigate();
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -31,7 +33,24 @@ const Navbar = ({ onLoginClick }) => {
       </ul>
 
       <div className="navbar-actions">
-        <button className="login-btn" onClick={onLoginClick}>
+        <a
+          href="/register"
+          className="account"
+          onClick={(e) => {
+            e.preventDefault();
+            navigate("/register");
+          }}
+        >
+          Sign up
+        </a>
+        <button
+          className="login-btn"
+          href="/login"
+          onClick={(e) => {
+            e.preventDefault();
+            navigate("/login");
+          }}
+        >
           Login
         </button>
       </div>

@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import "./register.css";
+import { useNavigate } from "react-router-dom";
 
 /* IMAGES */
 import logo from "../../assets/logo.png";
@@ -9,6 +10,7 @@ import guardian3 from "../../assets/therapy.png";
 import guardian4 from "../../assets/name.png";
 
 export default function Register() {
+  const navigate = useNavigate();
   const [step, setStep] = useState(1);
   const [formData, setFormData] = useState({
     fullName: "",
@@ -432,6 +434,11 @@ export default function Register() {
                 <button 
                   type="submit"
                   className="nav-button submit-button"
+                  href="/profile"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    navigate("/profile");
+                  }}
                 >
                   Get Started ✓
                 </button>
