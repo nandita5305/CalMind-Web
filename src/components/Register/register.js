@@ -129,7 +129,7 @@ export default function Register() {
   
     if (validateStep()) {
       try {
-        const res = await fetch("http://localhost:5000/api/auth/register", {
+        const res = await fetch("https://calmind-web.onrender.com/api/auth/register", {
           method: "POST",
           headers: {
             "Content-Type": "application/json"
@@ -141,6 +141,16 @@ export default function Register() {
   
         if (res.ok) {
           alert("Account created 🎉");
+
+          // Automatically log in with the newly created account
+          if (data.token) {
+            localStorage.setItem("token", data.token);
+          }
+          if (data.user) {
+            localStorage.setItem("user", JSON.stringify(data.user));
+          }
+          
+          // Go straight to the profile page showing the new name
           navigate("/profile");
         } else {
           alert(data.message);

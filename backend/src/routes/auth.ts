@@ -19,18 +19,35 @@ router.post("/register", async (req, res) => {
 
     const hashedPassword = await bcrypt.hash(password, 10);
 
-    await db.insert(users).values({
-      fullName,
-      email,
-      password: hashedPassword,
-      phone,
-      age: Number(age),
-      city,
-      gender,
-      interests,
-    });
+    const [newUser] = await db
+      .insert(users)
+      .values({
+        fullName,
+        email,
+        password: hashedPassword,
+        phone,
+        age: Number(age),
+        city,
+        gender,
+        interests,
+      })
+      .returning({
+        id: users.id,
+        fullName: users.fullName,
+        email: users.email,
+      });
 
-    res.status(201).json({ message: "User created successfully" });
+    const token = jwt.sign(
+      { id: newUser.id, email: newUser.email },
+      JWT_SECRET,
+      { expiresIn: "1h" }
+    );
+
+    res.status(201).json({
+      message: "User created successfully",
+      token,
+      user: newUser,
+    });
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: "Something went wrong" });

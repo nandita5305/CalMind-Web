@@ -37,9 +37,16 @@ const Profile = () => {
 
   useEffect(() => {
     const storedUser = localStorage.getItem("user");
-  
-    if (storedUser) {
+
+    if (!storedUser || storedUser === "undefined") {
+      return;
+    }
+
+    try {
       setUser(JSON.parse(storedUser));
+    } catch (err) {
+      console.error("Failed to parse stored user from localStorage:", err);
+      localStorage.removeItem("user");
     }
   }, []);
   
