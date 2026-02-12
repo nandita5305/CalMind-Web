@@ -15,8 +15,7 @@ import {
 const Profile = () => {
   const [user, setUser] = useState(null);
 
-  const [activeTab, setActiveTab] = useState("overview");
-  const [selectedDate, setSelectedDate] = useState(new Date());
+
 
   // Mock data for sessions and activity
   const aiSessions = 28;

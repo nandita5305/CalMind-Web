@@ -1,10 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "./session.css";
 import Sidebar from "../Sidebar/sidebar";
 import { 
   FaBrain, 
   FaCalendarAlt, 
-  FaClock, 
   FaVideo,
   FaLink,
   FaCopy,
